@@ -283,7 +283,7 @@ public class WxPayService {
         String data = PaymentUtils.mapToXml(params);
 
         // 微信退款需要证书
-        CloseableHttpClient httpClient = HttpUtil.sslHttpsClient(appProperties.getWx().getCertificate_path(), appProperties.getWx().getApi_key());
+        CloseableHttpClient httpClient = HttpUtil.sslHttpsClient(appProperties.getWx().getCertificate_path(), appProperties.getWx().getMch_id());
 
         // 向微信发起退款
         String responseXml = HttpUtil.sendSslXmlPost(appProperties.getWx().getRefund_url(), data, null, httpClient);
